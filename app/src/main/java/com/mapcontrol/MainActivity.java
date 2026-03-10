@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Ana başlık
         TextView titleView = new TextView(this);
-        titleView.setText("Hoş Geldiniz");
+        titleView.setText("欢迎光临");
         titleView.setTextSize(24);
         titleView.setTextColor(0xFFFFFFFF);
         titleView.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Alt başlık (sıcak kanlı ama resmi)
         TextView subtitleView = new TextView(this);
-        subtitleView.setText("Yasal Uyarı ve Kullanım Koşulları");
+        subtitleView.setText("法律声明和使用条款");
         subtitleView.setTextSize(16);
         subtitleView.setTextColor(0xFF3DAEA8); // Accent rengi (sıcak ama profesyonel)
         subtitleView.setTypeface(null, android.graphics.Typeface.NORMAL);
@@ -211,11 +211,11 @@ public class MainActivity extends AppCompatActivity {
         contentContainer.setBackgroundColor(0xFF0A0F14);
         
         // Uyarı metni (daha güzelleştirilmiş)
-        String disclaimerText = "### Yasal Uyarı ve Sorumluluk Reddi\n" +
-                        "1. **Ücretsiz Dağıtım:** Bu yazılım, herhangi bir ücret talep edilmeksizin tamamen ücretsiz olarak dağıtılmaktadır. Yazılım içinde belirtilen içerikler ayrı bir ücret karşılığında satılmaz.\n" +
-                        "2. **Kullanıcı Onayı ve Risk Kabulü:** Kullanıcı, cihazın bellek (hafıza) ayarlarını veya araç konfigürasyonlarını kendi rızasıyla ve bilinciyle değiştirdiğini onaylar.\n" +
-                        "3. **Sorumluluk Reddi:** Geliştirici, bu değişiklikler veya uygulamanın kullanımı sonucunda ortaya çıkabilecek hiçbir doğrudan veya dolaylı zarardan, veri kaybından veya arızadan **sorumlu değildir ve hiçbir yükümlülük kabul etmez.**\n" +
-                        "**Onay:** Lütfen uygulamayı kullanmaya başlamadan önce yukarıdaki tüm bilgileri **okuduğunuzu, anladığınızu ve kabul ettiğinizi** onaylayın.";
+        String disclaimerText = "### 法律警告和责任声明\n" +
+                        "1. **免费分发：**本软件完全免费分发，无需支付任何费用。软件中提到的内容不以单独的费用出售。\n" +
+                        "2. **用户验证和接受风险：** 用户同意并自行知情地更改设备的内存（内存）设置或设备配置。\n" +
+                        "3. **免责声明：** 开发者不承担任何直接或间接的损害，可能由于这些更改或使用应用程序，对数据丢失或故障不承担任何责任。**\n" +
+                        "**确认：**在开始使用应用程序之前，请确认您已阅读，理解和接受上述所有信息**。";
                         
         TextView messageView = new TextView(this);
         messageView.setText(parseMarkdown(disclaimerText));
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
         
         builder.setView(mainContainer);
         
-        builder.setPositiveButton("Kabul Ediyorum", (dialog, which) -> {
+        builder.setPositiveButton("我接受", (dialog, which) -> {
             // Kullanıcı kabul etti, kaydet ve uygulamayı başlat
             SharedPreferences prefs = getSharedPreferences("MapControlPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
             initializeApp();
         });
         
-        builder.setNegativeButton("Kabul Etmiyorum", (dialog, which) -> {
+        builder.setNegativeButton("我不接受", (dialog, which) -> {
             // Kullanıcı kabul etmedi, uygulamayı kapat
             finish();
         });
@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Ana başlık
         TextView titleView = new TextView(this);
-        titleView.setText("Uygulama Yönetimi");
+        titleView.setText("应用 管理");
         titleView.setTextSize(24);
         titleView.setTextColor(0xFFFFFFFF);
         titleView.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -324,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Alt başlık (sıcak kanlı ama resmi)
         TextView subtitleView = new TextView(this);
-        subtitleView.setText("Yasal Uyarı ve Sorumluluk Reddi");
+        subtitleView.setText("法律警告和责任声明");
         subtitleView.setTextSize(16);
         subtitleView.setTextColor(0xFF3DAEA8); // Accent rengi (sıcak ama profesyonel)
         subtitleView.setTypeface(null, android.graphics.Typeface.NORMAL);
@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
         contentContainer.setBackgroundColor(0xFF0A0F14);
         
         // Uyarı metni
-        String disclaimerText = "Uygulama yükleme ve kaldırma işlemleri tamamen kullanıcının sorumluluğundadır. Geliştirici, kullanıcının yüklediği veya kaldırdığı uygulamalardan kaynaklanan hiçbir sorumluluğu kabul etmez.";
+        String disclaimerText = "应用程序的安装和卸载完全由用户负责。开发人员不承担由用户安装或卸载的应用程序引起的任何责任。";
         
         TextView messageView = new TextView(this);
         messageView.setText(disclaimerText);
@@ -368,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
         
         builder.setView(mainContainer);
         
-        builder.setPositiveButton("Kabul Ediyorum", (dialog, which) -> {
+        builder.setPositiveButton("我接受", (dialog, which) -> {
             // Kullanıcı kabul etti, kaydet ve sekme değiştir
             SharedPreferences prefs = getSharedPreferences("MapControlPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
@@ -377,14 +377,14 @@ public class MainActivity extends AppCompatActivity {
             
             switchTab(3);
             if (topBarTitle != null) {
-                topBarTitle.setText("Uygulama Yönetimi");
+                topBarTitle.setText("应用 管理");
             }
             if (menuApps != null && menuWifi != null && menuSettings != null && menuDriveMode != null && menuTest != null) {
                 updateMenuSelection(menuApps, menuWifi, menuSettings, menuDriveMode, menuTest);
             }
         });
         
-        builder.setNegativeButton("Geri", (dialog, which) -> {
+        builder.setNegativeButton("返回", (dialog, which) -> {
             // Kullanıcı geri döndü, dialog'u kapat
             dialog.dismiss();
         });
@@ -477,7 +477,7 @@ public class MainActivity extends AppCompatActivity {
             String versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             
             // SpannableString ile farklı stiller uygula
-            android.text.SpannableString spannableText = new android.text.SpannableString("MapControl by vNoisy (" + versionName + ")");
+            android.text.SpannableString spannableText = new android.text.SpannableString("用vNoisy实现地图控制 (" + versionName + ")");
             
             // "vNoisy" kısmını italik yap
             int vNoisyStart = spannableText.toString().indexOf("vNoisy");
@@ -527,14 +527,14 @@ public class MainActivity extends AppCompatActivity {
         menuContainer.setBackgroundColor(0xFF1C2630);
         
         // Menü öğeleri oluştur (daha büyük ve ergonomik, minimum 80x80px dokunma alanı)
-        menuWifi = createRailMenuItemView("📶", "Wi-Fi Yönetimi", true);
-        menuApps = createRailMenuItemView("📱", "Uygulama Yönetimi", false);
-        menuFileUpload = createRailMenuItemView("📤", "Dosya Yükle", false);
-        menuProfile = createRailMenuItemView("👤", "Profil", false);
-        menuDriveMode = createRailMenuItemView("🚗", "Hafıza Modu", false);
-        menuTest = createRailMenuItemView("📷", "Kamera Test", false);
-        menuProjection = createRailMenuItemView("🗺️", "Yansıtma", false);
-        menuSettings = createRailMenuItemView("⚙️", "Ayarlar", false);
+        menuWifi = createRailMenuItemView("📶", "Wi-Fi 管理", true);
+        menuApps = createRailMenuItemView("📱", "应用 管理", false);
+        menuFileUpload = createRailMenuItemView("📤", "上传文件", false);
+        menuProfile = createRailMenuItemView("👤", "个人资料", false);
+        menuDriveMode = createRailMenuItemView("🚗", "记忆模式", false);
+        menuTest = createRailMenuItemView("📷", "相机 Test", false);
+        menuProjection = createRailMenuItemView("🗺️", "反射", false);
+        menuSettings = createRailMenuItemView("⚙️", "设置", false);
         
         menuContainer.addView(menuWifi);
         menuContainer.addView(menuApps);
@@ -542,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
         menuContainer.addView(menuProfile);
         menuContainer.addView(menuDriveMode);
         // menuTest gizli - Log ekranından erişilebilir
-        menuTest.setVisibility(android.view.View.GONE);
+//        menuTest.setVisibility(android.view.View.GONE);
         menuContainer.addView(menuTest);
         menuContainer.addView(menuProjection);
         menuContainer.addView(menuSettings);
@@ -579,7 +579,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Başlık TextView
         TextView topBarTitle = new TextView(this);
-        topBarTitle.setText("Wi-Fi Yönetimi");
+        topBarTitle.setText("Wi-Fi 管理");
         topBarTitle.setTextSize(20);
         topBarTitle.setTextColor(0xFFFFFFFF);
         topBarTitle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -619,7 +619,7 @@ public class MainActivity extends AppCompatActivity {
         mainContentParams.gravity = android.view.Gravity.END; // Sağa hizala
         rootContainer.addView(mainContent, mainContentParams);
         
-        // Drawer menü öğelerine tıklandığında
+        // 当单击 Drawer 菜单项时
         final TextView finalTopBarTitle = topBarTitle;
         
         // finalTopBarTitle'a 3 kere tıklama ile Sistem Kayıtları menüsünü açma/kapatma
@@ -633,7 +633,7 @@ public class MainActivity extends AppCompatActivity {
             titleClickHandler.removeCallbacks(titleClickReset);
             
             if (titleClickCount[0] >= 3) {
-                // Sistem Kayıtları menüsü açıksa kapat, kapalıysa aç
+                // 系统日志菜单打开时关闭，关闭时打开
                 if (isLogTabVisible[0]) {
                     // Gizle - önceki tab'a geri dön
                     isLogTabVisible[0] = false;
@@ -661,56 +661,56 @@ public class MainActivity extends AppCompatActivity {
         
         menuWifi.setOnClickListener(v -> {
             switchTab(0);
-            finalTopBarTitle.setText("Wi-Fi Yönetimi");
+            finalTopBarTitle.setText("Wi-Fi 管理");
             updateMenuSelection(menuWifi, menuFileUpload, menuProfile, menuProjection, menuSettings, menuApps, menuDriveMode, menuTest);
         });
         
         menuFileUpload.setOnClickListener(v -> {
             switchTab(1);
-            finalTopBarTitle.setText("Dosya Yükle");
+            finalTopBarTitle.setText("上传文件");
             updateMenuSelection(menuFileUpload, menuWifi, menuProfile, menuProjection, menuSettings, menuApps, menuDriveMode, menuTest);
         });
         
         menuProfile.setOnClickListener(v -> {
             switchTab(2);
-            finalTopBarTitle.setText("Profil");
+            finalTopBarTitle.setText("个人资料");
             updateMenuSelection(menuProfile, menuWifi, menuFileUpload, menuProjection, menuSettings, menuApps, menuDriveMode, menuTest);
         });
         
         menuProjection.setOnClickListener(v -> {
             switchTab(3);
-            finalTopBarTitle.setText("Yansıtma");
+            finalTopBarTitle.setText("反射");
             updateMenuSelection(menuProjection, menuWifi, menuFileUpload, menuProfile, menuSettings, menuApps, menuDriveMode, menuTest);
         });
         
         menuSettings.setOnClickListener(v -> {
             switchTab(7);
-            finalTopBarTitle.setText("Ayarlar");
+            finalTopBarTitle.setText("设置");
             updateMenuSelection(menuSettings, menuWifi, menuFileUpload, menuProfile, menuProjection, menuApps, menuDriveMode, menuTest);
         });
         
         
         menuApps.setOnClickListener(v -> {
-            // Uygulama Yönetimi uyarısını kontrol et
+            // 检查应用管理警报
             SharedPreferences appPrefs = getSharedPreferences("MapControlPrefs", MODE_PRIVATE);
             boolean appManagementDisclaimerAccepted = appPrefs.getBoolean("appManagementDisclaimerAccepted", false);
             
             if (appManagementDisclaimerAccepted) {
-                // Daha önce kabul edilmiş, direkt sekme değiştir
+                // 以前接受，直接更改标签
                 switchTab(5);
                 if (topBarTitle != null) {
-                    topBarTitle.setText("Uygulama Yönetimi");
+                    topBarTitle.setText("应用 管理");
                 }
                 updateMenuSelection(menuApps, menuWifi, menuFileUpload, menuProfile, menuProjection, menuSettings, menuDriveMode, menuTest);
             } else {
-                // İlk kez açılıyor, uyarıyı göster
+                // 第一次打开，显示警告
                 showAppManagementDisclaimer();
             }
         });
         
         menuDriveMode.setOnClickListener(v -> {
             switchTab(6);
-            finalTopBarTitle.setText("Hafıza Modu");
+            finalTopBarTitle.setText("记忆模式");
                 updateMenuSelection(menuDriveMode, menuWifi, menuFileUpload, menuProfile, menuProjection, menuSettings, menuApps, menuTest);
         });
         
@@ -729,11 +729,11 @@ public class MainActivity extends AppCompatActivity {
                         webServerStatusText.setTextColor(0xFF3DAEA8);
                     }
                     if (btnWebServerToggle != null) {
-                        btnWebServerToggle.setText("■ Web Server Durdur");
+                        btnWebServerToggle.setText("■ 停止 Web 服务器");
                     }
                     // QR kod oluştur
                     generateQRCode(serverUrl);
-                    log("Web Server başlatıldı: " + serverUrl);
+                    log("Web Server 启动: " + serverUrl);
                 });
             }
 
@@ -741,16 +741,16 @@ public class MainActivity extends AppCompatActivity {
             public void onServerStopped() {
                 handler.post(() -> {
                     if (webServerStatusText != null) {
-                        webServerStatusText.setText("Sunucu durduruldu");
+                        webServerStatusText.setText("服务器已停止");
                         webServerStatusText.setTextColor(0xAAFFFFFF);
                     }
                     if (qrCodeImageView != null) {
                         qrCodeImageView.setVisibility(android.view.View.GONE);
                     }
                     if (btnWebServerToggle != null) {
-                        btnWebServerToggle.setText("▶ Web Server Başlat");
+                        btnWebServerToggle.setText("▶ 启动 Web 服务器");
                     }
-                    log("Web Server durduruldu");
+                    log("Web 服务器已停止");
                 });
             }
 
@@ -758,10 +758,10 @@ public class MainActivity extends AppCompatActivity {
             public void onError(String error) {
                 handler.post(() -> {
                     if (webServerStatusText != null) {
-                        webServerStatusText.setText("Hata: " + error);
+                        webServerStatusText.setText("错误: " + error);
                         webServerStatusText.setTextColor(0xFFFF0000);
                     }
-                    log("Web Server hatası: " + error);
+                    log("Web 服务器错误: " + error);
                 });
             }
 
@@ -807,7 +807,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Başlık
         TextView fileUploadTitle = new TextView(this);
-        fileUploadTitle.setText("Dosya Yükle");
+        fileUploadTitle.setText("上传文件");
         fileUploadTitle.setTextSize(18);
         fileUploadTitle.setTextColor(0xFFFFFFFF);
         fileUploadTitle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -818,7 +818,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Açıklama
         TextView fileUploadDesc = new TextView(this);
-        fileUploadDesc.setText("Web Server'ı başlatarak aynı ağdaki cihazlardan dosya yükleyebilirsiniz.");
+        fileUploadDesc.setText("您可以通过启动 Web 服务器从同一网络上的设备上传文件。");
         fileUploadDesc.setTextSize(13);
         fileUploadDesc.setTextColor(0xAAFFFFFF);
         fileUploadDesc.setPadding(16, 0, 16, 16);
@@ -828,7 +828,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Toggle butonu
         btnWebServerToggle = new Button(this);
-        btnWebServerToggle.setText("▶ Web Server Başlat");
+        btnWebServerToggle.setText("▶ 启动 Web 服务器");
         btnWebServerToggle.setTextColor(0xFFFFFFFF);
         btnWebServerToggle.setTextSize(16);
         btnWebServerToggle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -848,7 +848,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Durum metni (büyük ve ortalanmış)
         webServerStatusText = new TextView(this);
-        webServerStatusText.setText("Sunucu durduruldu");
+        webServerStatusText.setText("服务器已停止");
         webServerStatusText.setTextSize(20);
         webServerStatusText.setTextColor(0xAAFFFFFF);
         webServerStatusText.setGravity(android.view.Gravity.CENTER);
@@ -902,9 +902,9 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        // === YANSITMA KONTROLÜ BÖLÜMÜ ===
+        // === 反射控制 部分 ===
         TextView projectionTitle = new TextView(this);
-        projectionTitle.setText("Yansıtma Kontrolü");
+        projectionTitle.setText("反射控制");
         projectionTitle.setTextSize(18);
         projectionTitle.setTextColor(0xFFFFFFFF);
         projectionTitle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -913,9 +913,9 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        // Durum metni (küçük, düşük kontrast)
+        //状态文本（ 小， 低对比度）
         TextView projectionStatus = new TextView(this);
-        projectionStatus.setText("Yansıtma kapalı");
+        projectionStatus.setText("反射关闭");
         projectionStatus.setTextSize(13);
         projectionStatus.setTextColor(0xAAFFFFFF); // %67 opaklık
         projectionStatus.setPadding(16, 0, 16, 16);
@@ -931,7 +931,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Yansıt butonu
         Button btnOpen = new Button(this);
-        btnOpen.setText("Yansıt");
+        btnOpen.setText("反射");
         btnOpen.setTextColor(0xFFFFFFFF);
         btnOpen.setTextSize(16);
         btnOpen.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -945,7 +945,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Durdur butonu (her zaman görünür)
         Button btnClose = new Button(this);
-        btnClose.setText("Durdur");
+        btnClose.setText("停止");
         btnClose.setTextColor(0xFFFFFFFF);
         btnClose.setTextSize(16);
         btnClose.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -960,7 +960,7 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-setContentView(rootContainer);
+        setContentView(rootContainer);
 
         // Buton click listener'ları
         btnOpen.setOnClickListener(v -> {
@@ -969,7 +969,7 @@ setContentView(rootContainer);
             updateProjectionUI(projectionStatus, btnOpen, btnClose);
             
             // Butonu animasyonla disabled yap (2-3 saniye)
-            handleButtonClickWithDelay(btnOpen, "Yansıt", "Yansıtılıyor...");
+            handleButtonClickWithDelay(btnOpen, "反射", "正在反映...");
         });
 
         btnClose.setOnClickListener(v -> {
@@ -978,7 +978,7 @@ setContentView(rootContainer);
             updateProjectionUI(projectionStatus, btnOpen, btnClose);
             
             // Butonu animasyonla disabled yap (2-3 saniye)
-            handleButtonClickWithDelay(btnClose, "Durdur", "Durduruluyor...");
+            handleButtonClickWithDelay(btnClose, "停止", "正在停止...");
         });
         
         // İlk yüklemede durumu güncelle
@@ -988,7 +988,7 @@ setContentView(rootContainer);
 
         // === UYGULAMA BÖLÜMÜ ===
         TextView appTitle = new TextView(this);
-        appTitle.setText("Uygulama");
+        appTitle.setText("应用程式");
         appTitle.setTextSize(18);
         appTitle.setTextColor(0xFFFFFFFF);
         appTitle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -1038,7 +1038,7 @@ setContentView(rootContainer);
         textInfo.setPadding(0, 0, 0, 0);
         
         targetAppLabel = new TextView(this);
-        targetAppLabel.setText("(seçilmedi)");
+        targetAppLabel.setText("(未选中)");
         targetAppLabel.setTextColor(0xFFFFFFFF);
         targetAppLabel.setTextSize(17);
         targetAppLabel.setTypeface(null, android.graphics.Typeface.NORMAL);
@@ -1049,7 +1049,7 @@ setContentView(rootContainer);
         textInfo.addView(targetAppLabel, targetLabelParams);
         
         TextView appDesc = new TextView(this);
-        appDesc.setText("Seçili uygulamayı araç ekranına yansıt");
+        appDesc.setText("在工具屏幕上反映所选应用程序");
         appDesc.setTextColor(0xAAFFFFFF); // %67 opaklık (düşük kontrast)
         appDesc.setTextSize(13);
         textInfo.addView(appDesc);
@@ -1064,7 +1064,7 @@ setContentView(rootContainer);
         appButtons.setOrientation(LinearLayout.HORIZONTAL);
         
         Button btnSelectApp = new Button(this);
-        btnSelectApp.setText("Değiştir");
+        btnSelectApp.setText("修改");
         btnSelectApp.setTextColor(0xCCFFFFFF); // %80 opaklık (secondary)
         btnSelectApp.setTextSize(14);
         btnSelectApp.setTypeface(null, android.graphics.Typeface.NORMAL);
@@ -1080,7 +1080,7 @@ setContentView(rootContainer);
         });
 
         Button btnLaunchOnCluster = new Button(this);
-        btnLaunchOnCluster.setText("▶ Ana Ekrana Al");
+        btnLaunchOnCluster.setText("▶ 主屏幕");
         btnLaunchOnCluster.setTextColor(0xFFFFFFFF);
         btnLaunchOnCluster.setTextSize(14);
         btnLaunchOnCluster.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -1104,7 +1104,7 @@ setContentView(rootContainer);
         
         // Ana grup başlığı
         TextView mainGroupTitle = new TextView(this);
-        mainGroupTitle.setText("Navigasyon Davranışı");
+        mainGroupTitle.setText("导航行为");
         mainGroupTitle.setTextSize(18);
         mainGroupTitle.setTextColor(0xFFFFFFFF); // Yüksek kontrast beyaz
         mainGroupTitle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -1131,7 +1131,7 @@ setContentView(rootContainer);
         
         // Alt bölüm başlığı (en kontrastlı)
         TextView section1Title = new TextView(this);
-        section1Title.setText("Başlatma");
+        section1Title.setText("开始");
         section1Title.setTextSize(17);
         section1Title.setTextColor(0xFFFFFFFF); // Yüksek kontrast
         section1Title.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -1140,7 +1140,7 @@ setContentView(rootContainer);
         
         // Alt bölüm açıklaması
         TextView section1Desc = new TextView(this);
-        section1Desc.setText("Ne zaman başlasın?");
+        section1Desc.setText("什么时候开始？");
         section1Desc.setTextSize(13);
         section1Desc.setTextColor(0xAAFFFFFF); // %67 opaklık
         section1Desc.setPadding(20, 0, 20, 12);
@@ -1180,14 +1180,14 @@ setContentView(rootContainer);
         textColumn1.setOrientation(LinearLayout.VERTICAL);
         
         TextView title1 = new TextView(this);
-        title1.setText("Motor çalışınca");
+        title1.setText("发动机运行时");
         title1.setTextColor(0xFFFFFFFF); // Yüksek kontrast
         title1.setTextSize(16);
         title1.setTypeface(null, android.graphics.Typeface.NORMAL); // Medium weight
         textColumn1.addView(title1);
         
         TextView desc1 = new TextView(this);
-        desc1.setText("Direkt start verildiğinde");
+        desc1.setText("直接启动时");
         desc1.setTextColor(0xAAFFFFFF); // %67 opaklık (düşük kontrast açıklama)
         desc1.setTextSize(13);
         desc1.setPadding(0, 2, 0, 0);
@@ -1243,14 +1243,14 @@ setContentView(rootContainer);
         textColumn2.setOrientation(LinearLayout.VERTICAL);
         
         TextView title2 = new TextView(this);
-        title2.setText("Araç hazır olduğunda");
+        title2.setText("当车辆准备好");
         title2.setTextColor(0xFFFFFFFF); // Yüksek kontrast
         title2.setTextSize(16);
         title2.setTypeface(null, android.graphics.Typeface.NORMAL); // Medium weight
         textColumn2.addView(title2);
         
         TextView desc2 = new TextView(this);
-        desc2.setText("Engine Start 1 kere basınca (Frensiz)");
+        desc2.setText("发动机启动压力1次（法国）");
         desc2.setTextColor(0xAAFFFFFF); // %67 opaklık
         desc2.setTextSize(13);
         desc2.setPadding(0, 2, 0, 0);
@@ -1306,14 +1306,14 @@ setContentView(rootContainer);
         textColumn3.setOrientation(LinearLayout.VERTICAL);
         
         TextView title3 = new TextView(this);
-        title3.setText("Elle çalıştır");
+        title3.setText("手动运行");
         title3.setTextColor(0xFFFFFFFF); // Yüksek kontrast
         title3.setTextSize(16);
         title3.setTypeface(null, android.graphics.Typeface.NORMAL); // Medium weight
         textColumn3.addView(title3);
         
         TextView desc3 = new TextView(this);
-        desc3.setText("Kendiniz istediğinize zaman başlatın");
+        desc3.setText("随时开始自己");
         desc3.setTextColor(0xAAFFFFFF); // %67 opaklık
         desc3.setTextSize(13);
         desc3.setPadding(0, 2, 0, 0);
@@ -2357,7 +2357,7 @@ setContentView(rootContainer);
                             }
                         }
                     } catch (Exception e) {
-                        log("❌ Ters değer gönderme hatası: " + e.getMessage());
+                        log("❌ 反向发送错误: " + e.getMessage());
                     }
                 }
                 
@@ -2380,20 +2380,20 @@ setContentView(rootContainer);
                 
                 if (isActiveRef[0]) {
                     if (settingKey.equals("issSetting")) {
-                        statusViews[cardIndex].setText("ISS Kapalı");
+                        statusViews[cardIndex].setText("ISS关闭");
                     } else if (settingKey.equals("spdLimitSetting")) {
-                        statusViews[cardIndex].setText("Uyarı Kapalı");
+                        statusViews[cardIndex].setText("警告已关闭");
                     } else if (settingKey.equals("ldwSetting")) {
-                        statusViews[cardIndex].setText("LDW Kapalı");
+                        statusViews[cardIndex].setText("LDW 关闭");
                     } else if (settingKey.equals("ldpSetting")) {
-                        statusViews[cardIndex].setText("LDP Kapalı");
+                        statusViews[cardIndex].setText("LDP 关闭");
                     } else if (settingKey.equals("fcwSetting")) {
-                        statusViews[cardIndex].setText("FCW Kapalı");
+                        statusViews[cardIndex].setText("FCW 关闭");
                     } else if (settingKey.equals("aebSetting")) {
-                        statusViews[cardIndex].setText("AEB Kapalı");
+                        statusViews[cardIndex].setText("AEB 关闭");
                     }
                 } else {
-                    statusViews[cardIndex].setText("Ayarlanmadı");
+                    statusViews[cardIndex].setText("未设置");
                 }
                 
                 onChips[cardIndex].setVisibility(isActiveRef[0] ? android.view.View.VISIBLE : android.view.View.GONE);
@@ -2417,7 +2417,7 @@ setContentView(rootContainer);
         
         // İnce durum satırı (collapsing - scroll ile kaybolabilir)
         wifiStatusLine = new TextView(this);
-        wifiStatusLine.setText("Bağlı değil");
+        wifiStatusLine.setText("未连接");
         wifiStatusLine.setTextSize(12);
         wifiStatusLine.setTextColor(0xFF9DABB9);
         wifiStatusLine.setPadding(16, 8, 16, 8);
@@ -2436,7 +2436,7 @@ setContentView(rootContainer);
         
         // Aç/Kapat butonu
         btnWifiToggle = new Button(this);
-        btnWifiToggle.setText("Wi-Fi Aç");
+        btnWifiToggle.setText("Wi-Fi 打开");
         btnWifiToggle.setTextSize(14);
         btnWifiToggle.setTextColor(0xFFFFFFFF);
         btnWifiToggle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -2456,7 +2456,7 @@ setContentView(rootContainer);
         
         // Yenile butonu
         btnScanWifi = new Button(this);
-        btnScanWifi.setText("Yenile");
+        btnScanWifi.setText("刷新");
         btnScanWifi.setTextSize(14);
         btnScanWifi.setTextColor(0xFFFFFFFF);
         btnScanWifi.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -2509,7 +2509,7 @@ setContentView(rootContainer);
         
         // Başlık (sol)
         TextView logTitle = new TextView(this);
-        logTitle.setText("Sistem Kayıtları");
+        logTitle.setText("系统记录");
         logTitle.setTextSize(20);
         logTitle.setTextColor(0xFFFFFFFF);
         logTitle.setTypeface(null, android.graphics.Typeface.BOLD);
@@ -2519,7 +2519,7 @@ setContentView(rootContainer);
         
         // Kamera Test butonu (sağ)
         Button btnCameraTest = new Button(this);
-        btnCameraTest.setText("📷 Kamera Test");
+        btnCameraTest.setText("📷 相机！Test！");
         btnCameraTest.setTextColor(0xFFFFFFFF);
         btnCameraTest.setTextSize(14);
         btnCameraTest.setBackgroundColor(0xFF3DAEA8);
@@ -2536,7 +2536,7 @@ setContentView(rootContainer);
         
         // Hoşgeldin Ses Test butonu (sağ)
         Button btnAudioTest = new Button(this);
-        btnAudioTest.setText("🔊 Hoşgeldin Ses Test");
+        btnAudioTest.setText("🔊 欢迎光临音频测试");
         btnAudioTest.setTextColor(0xFFFFFFFF);
         btnAudioTest.setTextSize(14);
         btnAudioTest.setBackgroundColor(0xFF3DAEA8);
@@ -7349,12 +7349,12 @@ setContentView(rootContainer);
     private void updateProjectionUI(TextView statusText, Button btnOpen, Button btnClose) {
         if (isNavigationOpen) {
             // Aktif durum
-            statusText.setText("Yansıtma aktif");
+            statusText.setText("反射活动");
             //btnOpen.setEnabled(false); // Yansıt butonu pasif
             //btnClose.setEnabled(true); // Durdur butonu aktif
         } else {
             // Pasif durum
-            statusText.setText("Yansıtma kapalı");
+            statusText.setText("反射关闭");
             //btnOpen.setEnabled(true); // Yansıt butonu aktif
             //btnClose.setEnabled(false); // Durdur butonu pasif
         }

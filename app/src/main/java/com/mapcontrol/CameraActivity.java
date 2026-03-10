@@ -73,7 +73,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
         @Override
         public void onCameraAvailable(@NonNull String str) {
             super.onCameraAvailable(str);
-            CameraActivity.this.log("[INFO] Kamera kullanılabilir: " + str);
+            CameraActivity.this.log("[INFO] 摄像机可用: " + str);
             try {
                 if (str.equals("0")) {
                     CameraActivity.this.isCameraAvailable0 = true;
@@ -89,7 +89,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
                     CameraActivity.this.initCamera("AVM4");
                 }
             } catch (CameraAccessException e) {
-                CameraActivity.this.log("[ERROR] Kamera başlatma hatası: " + str + " - " + e.getMessage());
+                CameraActivity.this.log("[ERROR] 相机启动错误: " + str + " - " + e.getMessage());
             }
         }
 
@@ -108,7 +108,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
 
         @Override
         public void onDisconnected(@NonNull CameraDevice cameraDevice) {
-            CameraActivity.this.log("[WARN] Kamera bağlantısı kesildi: " + cameraDevice.getId());
+            CameraActivity.this.log("[WARN] 相机已断开连接: " + cameraDevice.getId());
             if (cameraDevice.getId().equals("0")) {
                 CameraActivity.this.isCameraAvailable0 = false;
             } else if (cameraDevice.getId().equals("1")) {
@@ -123,13 +123,13 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
 
         @Override
         public void onError(@NonNull CameraDevice cameraDevice, int i2) {
-            CameraActivity.this.log("[ERROR] Kamera hatası: " + cameraDevice.getId() + " - Hata kodu: " + i2);
+            CameraActivity.this.log("[ERROR] 相机错误: " + cameraDevice.getId() + " - 错误代码: " + i2);
             CameraActivity.this.closeCamera(cameraDevice);
         }
 
         @Override
         public void onOpened(@NonNull CameraDevice cameraDevice) {
-            CameraActivity.this.log("[INFO] Kamera açıldı: " + cameraDevice.getId());
+            CameraActivity.this.log("[INFO] 摄像机打开: " + cameraDevice.getId());
             try {
                 CameraBean cameraBean = new CameraBean(this.cameraId, cameraDevice, new CameraBean.LogListener() {
                     @Override
@@ -140,7 +140,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
                 CameraActivity.this.mCameraBeans.add(cameraBean);
                 CameraActivity.this.createCameraPreview(cameraBean);
             } catch (CameraAccessException e) {
-                CameraActivity.this.log("[ERROR] Kamera önizleme oluşturma hatası: " + e.getMessage());
+                CameraActivity.this.log("[ERROR] 创建相机预览出错: " + e.getMessage());
             }
         }
     }
@@ -148,7 +148,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
     private void closeCamera(CameraDevice cameraDevice) {
         if (cameraDevice != null) {
             cameraDevice.close();
-            log("[INFO] Kamera kapatıldı: " + cameraDevice.getId());
+            log("[INFO] 摄像机已关闭: " + cameraDevice.getId());
         }
     }
 
@@ -224,14 +224,14 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
                 str2 = "";
                 break;
         }
-        log("[DEBUG] Kamera başlatılıyor: cameraId = " + str2);
+        log("[DEBUG] 正在启动相机: cameraId = " + str2);
         if (ContextCompat.checkSelfPermission(this, "android.permission.CAMERA") != 0 || ContextCompat.checkSelfPermission(this, "android.permission.WRITE_EXTERNAL_STORAGE") != 0 || ContextCompat.checkSelfPermission(this, "android.permission.RECORD_AUDIO") != 0) {
             requestPermissions(new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.RECORD_AUDIO"}, 2);
             return;
         }
         try {
             this.outputSize = ((StreamConfigurationMap) this.cameraManager.getCameraCharacteristics(str2).get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)).getOutputSizes(SurfaceTexture.class)[0];
-            log("[DEBUG] Kamera çıktı boyutu: " + this.outputSize.toString());
+            log("[DEBUG] 相机输出大小: " + this.outputSize.toString());
             if ((str2.equals("0") && this.isTextureAvailable0 && this.isCameraAvailable0) || ((str2.equals("1") && this.isTextureAvailable1 && this.isCameraAvailable1) || ((str2.equals("2") && this.isTextureAvailable2 && this.isCameraAvailable2) || (str2.equals("3") && this.isTextureAvailable3 && this.isCameraAvailable3)))) {
                 this.cameraManager.openCamera(str2, new CameraStateCallback(str), this.handler);
             }

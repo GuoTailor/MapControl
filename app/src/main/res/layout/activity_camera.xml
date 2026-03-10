@@ -16,7 +16,7 @@
         android:gravity="center_vertical">
         <Button
             android:id="@+id/btn_back"
-            android:text="← Geri Dön"
+            android:text="← 返回"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"

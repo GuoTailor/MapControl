@@ -676,12 +676,12 @@ public class MapControlService extends Service {
                     // Önce "Uygulama Hazırlanıyor" mesajını göster
                     showPreparingMessageOnDisplay(getClusterDisplayId());
                     Runnable timeoutRunnable = () -> {
-                        log("⚠️ İşlem zaman aşımına uğradı, mesaj gizleniyor.");
+                        log("⚠️ 交易超时，消息隐藏。");
                         hidePreparingMessage();
                     };
                     handler.postDelayed(timeoutRunnable, 7000);
             try {
-                log("🔌 Cluster display açılıyor...");
+                log("🔌 集群显示打开...");
 
                 // 1. Wake up event gönder
                     VDNaviDisplayCluster payloadwakeUp = new VDNaviDisplayCluster();
@@ -712,13 +712,13 @@ public class MapControlService extends Service {
                 VDEvent event = VDNaviDisplayCluster.createEvent(VDEventCarLan.NAVIGATION_DISPLAY_TO_CLUSTER, payload);
                 VDBus.getDefault().set(event);
 
-                log("✅ Navigasyon paneli açıldı");
+                log("✅ 导航面板已打开");
 
                 // 4. Eğer bir uygulama seçilmişse, cluster'da başlat (600ms gecikme ile)
                 handler.postDelayed(() -> {
                     String targetPackage = getTargetPackage();
                     if (targetPackage != null && !targetPackage.trim().isEmpty()) {
-                            log("🚀 Seçilen uygulama cluster'da başlatılıyor: " + targetPackage);
+                            log("🚀 在所选集群中启动应用程序: " + targetPackage);
                         launchSelectedAppOnCluster(targetPackage);
                     }
                     handler.postDelayed(() -> {
